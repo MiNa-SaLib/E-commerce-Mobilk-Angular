@@ -1,0 +1,160 @@
+<form [formGroup]="userRegisterForm" class="container d-flex">
+  <div class="col m-3">
+    <div class="mb-3">
+      <label for="" class="form-label">First name</label>
+      <input
+        formControlName="firstName"
+        type="text"
+        name="firstName"
+        id="firstName"
+        class="form-control"
+        aria-describedby="firstName"
+        [class.is-invalid]="firstName?.invalid && firstName?.touched"
+        [class.is-valid]="firstName?.valid"
+      />
+      <small
+        [hidden]="firstName?.untouched || firstName?.valid"
+        id="fullName"
+        class="text-danger"
+        >You must enter your first name.</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Last name</label>
+      <input
+        formControlName="lastName"
+        type="text"
+        name="lastName"
+        id="lastName"
+        class="form-control"
+        aria-describedby="lastName"
+        [class.is-invalid]="lastName?.invalid && lastName?.touched"
+        [class.is-valid]="lastName?.valid"
+      />
+      <small
+        [hidden]="lastName?.untouched || lastName?.valid"
+        id="fullName"
+        class="text-danger"
+        >You must enter your last name.</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Email</label>
+      <input
+        formControlName="email"
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        aria-describedby="email"
+      />
+      <small
+        [hidden]="email?.untouched || email?.valid"
+        id="email"
+        class="text-danger"
+        >You must enter your Email.</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Role</label>
+      <select class="form-control" formControlName="role" name="role" id="">
+        <option value="USER">User</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+
+      <small
+        [hidden]="role?.untouched || role?.valid"
+        id="email"
+        class="text-danger"
+        >You must specify your role.</small
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Password</label>
+      <input
+        formControlName="password"
+        type="text"
+        name="password"
+        id="password"
+        class="form-control"
+        aria-describedby="password"
+        [class.is-valid]="
+          password?.valid &&
+          specials.test(password?.value) &&
+          charsCapitals.test(password?.value) &&
+          numbers.test(password?.value)
+        "
+      />
+      <div>
+        <small
+          [hidden]="password?.untouched || password?.valid"
+          id="password"
+          class="text-danger"
+          >You must enter your password.</small
+        >
+        <small
+          *ngIf="!specials.test(password?.value)"
+          id="password"
+          class="text-danger d-block"
+          >You must enter at least one special character</small
+        >
+        <small
+          *ngIf="!charsCapitals.test(password?.value)"
+          id="password"
+          class="text-danger d-block"
+          >You must enter at least one Capital character</small
+        >
+        <small
+          *ngIf="!numbers.test(password?.value)"
+          id="password"
+          class="text-danger d-block"
+          >You must enter at least a number</small
+        >
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Confirm password</label>
+      <input
+        formControlName="ConfirmPassword"
+        type="text"
+        name="ConfirmPassword"
+        id="ConfirmPassword"
+        class="form-control"
+        aria-describedby="helpId"
+      />
+      <!-- <small id="helpId" class="text-muted">Help text</small> -->
+    </div>
+    <div>
+      <small
+        class="text-danger"
+        *ngIf="ConfirmPassword?.touched&&ConfirmPassword?.errors?.['required']"
+        id="ConfirmPassword"
+        >You must confirm password</small
+      >
+      <small
+        class="text-danger"
+        *ngIf="ConfirmPassword?.touched&&userRegisterForm?.errors?.['notMatch']"
+        id="ConfirmPassword"
+        >Does't match password</small
+      >
+    </div>
+    <button
+      [disabled]="
+        userRegisterForm.invalid ||
+        password?.invalid ||
+        !specials.test(password?.value) ||
+        !charsCapitals.test(password?.value) ||
+        !numbers.test(password?.value)
+      "
+      (click)="addNewUser()"
+      type="submit"
+      class="btn btn-primary"
+    >
+      REGISTER
+    </button>
+  </div>
+</form>
+<div *ngIf="isErrorRegisterFound" class="alert alert-warning" role="alert">
+  {{ userRegisterError }}
+</div>

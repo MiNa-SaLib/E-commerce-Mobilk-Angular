@@ -1,0 +1,61 @@
+<div class="container">
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets/carsoule1.png" alt="" />
+      </div>
+      <div class="carousel-item">
+        <img src="assets/carsoule2.png" alt="" />
+      </div>
+      <div class="carousel-item">
+        <img src="assets/carsoule3.png" alt="" />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <h1>Recommended for you</h1>
+  <div class="recommended">
+    <ng-container *ngFor="let product of this.recommendedProducts">
+      <a [routerLink]="['/prd', product._id]">
+        <div class="card">
+          <img
+            src="assets/{{ product.image }}"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <p class="card-text">
+              {{ product.name }}
+            </p>
+            <small>{{ product.price | currency : "EUR" }} </small>
+          </div>
+        </div>
+      </a>
+    </ng-container>
+  </div>
+  <a
+    name=""
+    id=""
+    class="btn btn-primary m-3"
+    [routerLink]="['/prd']"
+    role="button"
+    >See all products</a
+  >
+</div>

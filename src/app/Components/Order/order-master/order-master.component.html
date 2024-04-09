@@ -1,0 +1,48 @@
+<div class="mb-3">
+    <label for="cat" class="form-label">Category Name</label>
+    <select class="form-select form-select-lg" name="cat" id="cat"  [(ngModel)]="selected">
+        <option  [value]="0">All</option>
+        <option *ngFor="let item of catList" [value]="item.id">{{item.name}}</option>
+    </select>
+</div>
+<div class="bg-success">
+    <app-product-list [sentSelected]="selected" (onTotalPriceChanged)="getPrice($event)"></app-product-list>
+</div>
+
+<h3>order details:</h3>
+<div class="table-responsive">
+    <table class="table table-success">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+                <th>Cancel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of orderDetails;let index=index;" >
+                <td >{{index+1}}</td>
+                <td >{{item.productName}}</td>
+                <td >{{item.count}} 
+                    <button type="button" (click)="plus(item.count,item.productName)" class="m-1 btn btn-primary">+</button>
+                    <button type="button" (click)="minus(item.count,item.productName)" class="m-1 btn btn-primary">-</button>
+                </td>
+                <td >{{item.price|currency:'EUR'}}</td>
+                <td >{{item.total|currency:'EUR'}}</td>
+                <td><button type="button" (click)="remove(index)" class="btn btn-danger">Remove</button></td>
+            </tr>
+            <tr *ngIf="orderDetails.length>0" class="table-warning">
+                <td colspan="5">TOTAL</td>
+                <td  >
+                    {{totalPrice|currency:'EUR'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button  *ngIf="orderDetails.length>0" type="button" class="m-1 btn btn-primary">Confirm order</button>
+</div>
+
+

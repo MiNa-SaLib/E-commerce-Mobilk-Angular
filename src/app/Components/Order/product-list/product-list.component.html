@@ -1,0 +1,97 @@
+<!-- <a class="m-3 btn btn-outline-primary" (click)="addNewPrd()" role="button"
+  >Add New Product
+</a> -->
+<div class="container">
+  <div class="recommended m-3">
+    <ng-container *ngFor="let product of this.NewProductList">
+      <a [routerLink]="['/prd', product._id]">
+        <div class="card">
+          <img
+            src="assets/{{ product.image }}"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <p class="card-text">
+              {{ product.name }}
+            </p>
+            <small>{{ product.price | currency : "EUR" }}</small>
+          </div>
+        </div>
+      </a>
+    </ng-container>
+  </div>
+</div>
+<!--
+
+  <div class="table-responsive m-1">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">NO.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Image</th>
+          <th scope="col">Available Quantity</th>
+          <th scope="col">Price in USD</th>
+          <th scope="col">Count</th>
+          <th scope="col">Details</th>
+          <th scope="col">Add</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let i of NewProductList; let index = index">
+        <td>{{ index + 1 }}</td>
+        <td>{{ i.name }}</td>
+        <td>
+          <img
+          defaultColor="green"
+          LightBox="red"
+          [src]="i.image"
+          class="img-fluid rounded-top"
+          alt=""
+          />
+        </td>
+        <td>
+          <ng-container *ngIf="i.availableQuantity != 0; else outOfStock">
+            <div *ngIf="i.availableQuantity == 1">Last Item</div>
+            <div *ngIf="i.availableQuantity == 2">Last 2 Item</div>
+            <div *ngIf="i.availableQuantity > 2">{{ i.availableQuantity }}</div>
+          </ng-container>
+          <ng-template #outOfStock>Out of stock</ng-template>
+        </td>
+        <td>{{ i.price | currency : "EUR" }}</td>
+        <td>
+          <input
+          #count
+          type="number"
+          class="form-control"
+          name=""
+          id=""
+          aria-describedby="helpId"
+          placeholder=""
+          />
+          <small id="helpId" class="form-text text-muted"
+          >Enter Ur quantity which desired</small
+          >
+        </td>
+        <td>
+
+          <a class="btn btn-primary" [routerLink]="['/prd', i.id]" role="button"
+          >Details</a
+          >
+        </td>
+        <td>
+          <button
+          type="button"
+          class="btn btn-primary"
+          (click)="buy(i.id, i.price, count.value)"
+          >
+          ADD
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+-->

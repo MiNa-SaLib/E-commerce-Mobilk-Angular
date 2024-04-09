@@ -1,0 +1,117 @@
+<button
+  class="brows btn btn-light d-none"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasExample"
+  aria-controls="offcanvasExample"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    x="0px"
+    y="0px"
+    width="20"
+    height="20"
+    viewBox="0 0 50 50"
+  >
+    <path
+      d="M 0 9 L 0 11 L 50 11 L 50 9 Z M 0 24 L 0 26 L 50 26 L 50 24 Z M 0 39 L 0 41 L 50 41 L 50 39 Z"
+    ></path>
+  </svg>
+</button>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid p-0">
+    <a class="navbar-brand" [routerLink]="['home']">
+      <img class="logo" src="assets/mobile2icon.png" alt="" />
+    </a>
+    <!-- <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="home"
+            routerLinkActive="active"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="prd" routerLinkActive="active"
+            >Products</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="policy" routerLinkActive="active"
+            >Exchange and return policy</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="Shipping-policy"
+            routerLinkActive="active"
+            >Shipping policy</a
+          >
+        </li>
+        <!--
+        <li class="nav-item" [hidden]="isLogged">
+          <a class="nav-link" routerLink="register" routerLinkActive="active"
+            >Register</a
+          >
+        </li>
+
+        <li class="nav-item" [hidden]="!isLogged">
+          <a
+            data-bs-toggle="modal"
+            data-bs-target="#Logout"
+            name=""
+            id=""
+            role="button"
+            class="nav-link"
+            >Logout</a
+          >
+        </li> -->
+
+        <!-- <li class="nav-item text-warning" [hidden]="!isLogged">
+          Hello,{{ this.userName }}
+        </li> -->
+      </ul>
+    </div>
+    <a
+      *ngIf="userID"
+      [routerLink]="[userID, 'card']"
+      class="shoping d-flex align-items-center justify-content-center m-3"
+    >
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAwklEQVR4nN2TPQoCMRBGnyBYi1hbeQDBQ7iKeBrP4ClkQfAGloL2dpaWu9toZSMq6CpCioCwZrITQR9MN/lefibwL+TAw1QcQnC3BBegSSAWlsi3VkWCvoJgWySoALuSguGnaxqXCF+7vEMdOHmE50AXR2IPwQwBHWH4GWghZCMQTKThDeDguPM5UJMKpiZgaUZXldcU3YAr0CYAVeDo+Q+cGQH7kILgDIAMSIFIoe+N1Dp2otD3fUFkFidAT6Hvh3kC+qS+1QH9E3UAAAAASUVORK5CYII="
+      />
+      <span *ngIf="cardLengthNow">{{ cardLengthNow }}</span>
+    </a>
+  </div>
+
+  <!--  -->
+</nav>
+
+<button
+  class="btn btn-light"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasRight"
+  aria-controls="offcanvasRight"
+  (click)="userNameFun()"
+>
+  <img
+    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABPElEQVR4nO2VTUoDQRCFP5TowiTjTtAjiLrSHEPNLfzLGVwHQQ1eRDyDRBElGx3d6gEUFRNESWh4i0HtwWG60EV/UAykXlW9/pkJRCKRf8oksAOcAa+KLrANTFgPnwN6wNATV8Cs5cp7GnQNrAI1xRqQKndptRMtDbgBkh/yScbEloWBczV3K/exLo27E18ZFoxvvCjhttxHXZpnCwNPvzCQSPOIAV01dxfOR1OaUwsDm2qeei7hNHAnzYbFEVT0irnkrS5cXdHMDL+QNrgBx4yG+4pSacw+RB3gI8fAO7Dr2YFSjAMnGtIHDoAVYErRAA6BgTTHwFjII9jTj/fAQo7RJeBB2nYoA4vAp1aeNzxrYqCjmicAR3K0X6Cmoxr3LE2qZssFahqZf83S9NWsWqCmqpq3EAYikQh/xQiejKeia2bQnAAAAABJRU5ErkJggg=="
+  />
+</button>

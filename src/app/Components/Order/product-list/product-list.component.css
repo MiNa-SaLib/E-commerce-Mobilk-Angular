@@ -1,0 +1,38 @@
+
+.lightBox{
+    border: 4px solid blue;
+    border-radius: 50%;
+}
+body{
+  min-height: 100vh;
+}
+a{
+  text-decoration: none;
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+img{
+  margin-top: 10px;
+  height: 300px;
+}
+
+
+.recommended{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.card{
+  min-width:  230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

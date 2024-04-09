@@ -1,0 +1,58 @@
+<form class="container d-flex">
+  <div class="col m-3">
+    <div class="mb-3">
+      <label for="" class="form-label">Email</label>
+      <input
+        [(ngModel)]="userEmail"
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        aria-describedby="email"
+      />
+      <small *ngIf="" id="email" class="text-success"></small>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Password</label>
+      <input
+        [(ngModel)]="userPassword"
+        type="password"
+        name="password"
+        id="password"
+        class="form-control"
+        aria-describedby="password"
+        required
+      />
+      <small *ngIf="" id="password" class="text-success"></small>
+    </div>
+    <button
+      [disabled]="!userEmail || !userPassword"
+      (click)="login()"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Login
+    </button>
+  </div>
+</form>
+
+<!-- <button
+  type="button"
+  class="btn btn-primary m-3"
+  (click)="login()"
+  [disabled]="isLogged"
+>
+  Login
+</button> -->
+<!-- <button
+  type="button"
+  class="btn btn-danger m-3"
+  (click)="logout()"
+  [disabled]="!isLogged"
+>
+  Logout
+</button> -->
+
+<div *ngIf="isNotFoundUser" class="alert alert-warning" role="alert">
+  {{ notFoundUserError }}
+</div>

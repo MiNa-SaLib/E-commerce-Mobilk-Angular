@@ -1,0 +1,184 @@
+<app-header></app-header>
+<div>
+  <router-outlet></router-outlet>
+</div>
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Mobilk</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="home"
+            routerLinkActive="active"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="prd" routerLinkActive="active"
+            >Products</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="policy" routerLinkActive="active"
+            >Exchange and return policy</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="Shipping-policy"
+            routerLinkActive="active"
+            >Shipping policy</a
+          >
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="order" routerLinkActive="active"
+            >Make an order</a
+          >
+        </li> -->
+        <!-- <li class="nav-item" [hidden]="isLogged">
+          <a class="nav-link" routerLink="login" routerLinkActive="active"
+            >Login</a
+          >
+        </li>
+        <li class="nav-item" [hidden]="isLogged">
+          <a class="nav-link" routerLink="register" routerLinkActive="active"
+            >Register</a
+          >
+        </li>
+
+        <li class="nav-item" [hidden]="!isLogged">
+          <a
+            data-bs-toggle="modal"
+            data-bs-target="#Logout"
+            name=""
+            id=""
+            role="button"
+            class="nav-link"
+            >Logout</a
+          >
+        </li> -->
+
+        <!-- <li class="nav-item text-warning" [hidden]="!isLogged">
+
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel"
+>
+  <div class="offcanvas-header">
+    <h5 *ngIf="userName" class="offcanvas-title" id="offcanvasRightLabel">
+      Hello, {{ userName }}
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <li class="nav-item" [hidden]="isLogged">
+        <a class="nav-link" routerLink="login" routerLinkActive="active"
+          >Login</a
+        >
+      </li>
+      <li class="nav-item" [hidden]="isLogged">
+        <a class="nav-link" routerLink="register" routerLinkActive="active"
+          >Register</a
+        >
+      </li>
+
+      <li class="nav-item" [hidden]="!isLogged">
+        <a
+          data-bs-toggle="modal"
+          data-bs-target="#Logout"
+          name=""
+          id=""
+          role="button"
+          class="nav-link"
+          >Logout</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Logout Modal -->
+<div
+  class="modal fade"
+  id="Logout"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalTitleId"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Logout</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          {{ userName }}, You are about to logout, Are you sure?
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Stay Logged
+        </button>
+        <button
+          data-bs-dismiss="modal"
+          type="button"
+          (click)="logout()"
+          class="btn btn-primary"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var modalId = document.getElementById("modalId");
+
+  modalId.addEventListener("show.bs.modal", function (event) {
+    // Button that triggered the modal
+    let button = event.relatedTarget;
+    // Extract info from data-bs-* attributes
+    let recipient = button.getAttribute("data-bs-whatever");
+
+    // Use above variables to manipulate the DOM
+  });
+</script>

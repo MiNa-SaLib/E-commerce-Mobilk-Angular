@@ -1,0 +1,44 @@
+body{
+  min-height: 100vh;
+}
+a{
+  text-decoration: none;
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.carousel-inner {
+
+  z-index: -11;
+}
+.carousel{
+  margin-top: 30px;
+  width: 80%;
+}
+img {
+  height: 400px;
+    width: 100%;
+    /* object-fit: cover; */
+}
+h1{
+  padding: 5px;
+  margin: 15px 0;
+}
+.recommended{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.card{
+  min-width:  230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

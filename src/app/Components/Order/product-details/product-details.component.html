@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="page m-4">
+    <div class="details">
+      <h3 class="name">{{ prdDetails?.name | uppercase }}</h3>
+      <small>PRICE: {{ prdDetails?.price | currency : "EUR" }}</small>
+      <p>
+        Available quantity of this product :
+        {{ prdDetails?.availableQuantity }} products
+      </p>
+      <button
+        [disabled]="!userAccessToken"
+        (click)="addToCard()"
+        name=""
+        id=""
+        class="btn btn-primary"
+        role="button"
+      >
+        Add to cart
+      </button>
+    </div>
+    <div class="image">
+      <img
+        *ngIf="prdDetails.image"
+        src="assets/{{ prdDetails.image }}"
+        alt="product image"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- <div class="m-3 card">
+  <img class="card-img-top" src="assets/{{ prdDetails.image }}" alt="Title" />
+  <div class="card-body">
+    <h4 class="card-title">{{ prdDetails?.name }}</h4>
+    <p class="card-text">
+      {{ prdDetails?.price | currency : "EUR" }}
+    </p>
+  </div>
+  <div class="btn-group">
+    <a
+      name=""
+      id=""
+      class="btn btn-primary"
+      (click)="edit(prdDetails?.id)"
+      role="button"
+      >Edit</a
+    >
+    <a
+      name=""
+      id=""
+      class="btn btn-warning"
+      href="#"
+      role="button"
+      (click)="back()"
+      >Back</a
+    >
+    <a
+      name=""
+      id=""
+      data-bs-toggle="modal"
+      data-bs-target="#delete"
+      class="btn btn-danger"
+      role="button"
+      >Delete</a
+    >
+  </div>
+</div> -->
+
+<div
+  class="modal fade"
+  id="delete"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="delete"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="delete">Deleting Product</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          You are about to delete this product, Are you sure?
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button
+          data-bs-dismiss="modal"
+          type="button"
+          (click)="delete(prdDetails?.id)"
+          class="btn btn-primary"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

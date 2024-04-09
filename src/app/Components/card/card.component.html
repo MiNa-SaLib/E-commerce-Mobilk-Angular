@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="container overflow-auto w-100">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Product Price</th>
+          <th scope="col">Product Image</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container
+          *ngFor="let product of this.cardDetails; let index = index"
+        >
+          <tr>
+            <th scope="row">{{ index + 1 }}</th>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price | currency : "EUR" }}</td>
+            <td>
+              <img
+                src="assets/{{ product.image }}"
+                alt="product image"
+                srcset=""
+              />
+            </td>
+
+            <td class="quantity">
+              <img
+                (click)="minus(counter, product._id, total)"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEQklEQVR4nO2YS28bZRSGR0BZdNnCAjWUJDRpmrTxZXy3Z8Ye36+JnTi2U7HNXwB10x3tvqCA+AmoZQFlw19AQGmrJnYckTS+e2zPOK3ibl70ObBBxGPXE3sWfqVv/7xnzne+My9FTTTRREMLyeS7YiRjlcKpO+3wxkMxtPFcCq43xOD6GzGw9kbyJxotX+KZ6E08bHnid0RP3IK7d9+hxq3XK6mP25H0fSmaPmpHUmiHU5BCG5BCSUjBJKTAOqTAGkT/GkRfAqKXnDhanlW03Csvm/zKvToXnxo5uJRMftiOpb+VIplOO5rG4PBdA2jxMTSc0U7TGd2WuMgHI4Fvr2xuHkczQjuawbDwTVcMTWcUTWcEDTZcFxzh9LmBY2vrQju2+d1xjIArC9/kugbQYENoOILfgKYvKAsf2brYjmV+Pnd4pmsAdbv/cYGOXFSw8qODF+wBCDY/BKvvFywm3x/awEjahvkvvB+CxYe62bs9JHzm9hjhUTd5IBjcqbeCF1c/u3wcS9fGCV83ulE1uIQCzQ0+YsmcHzd8zcijZuBRpV1fDwT/Kn57SolHSgn4Gu1CVc91GrT9av/Vj6TvqwW+pneiquNQ1bD3+oInS5YUTb1UFbyWRWWZOSJLo6wBslWqDb6qYYgBlDSMSdbA6UqsPvjKLQcqN+1fyPd/aOORSuFRXrJ9L99CoeSzXvCCZxUHXBj7bAj7bBD7TAB5RwB5ux95uw95mw97Vu/psXixZ/YgZ3IjZ+SRM/DI0S5k9U5kdRyyOha7Oga7WgZ7WgZlAn4GfGXJhtKi9U/5FgolhV6VJ/Cvnz6H0jr+7Q/klu1nwpcXrSjfsNTkv0Ag2enVNnk2iPPSi5vWXvAo3zCfyBvwr3V69XyeDZyfgSVLD3gLSgsmeQNSICH0urAHbBCvnjxVHP7419+RXbL2gDejdN0k30Ld9KDHtKk7o/jLEcCe3Ys9mxc5q+f0WDzImT3ImtzIGnlkDTyytAu7eid2dRx2dSx2dAx2tAx2NA7sLNvx4pat2zak8gS+SMDPhkdxzih/iVu+xKNxjsrKGfCleSNKcwb5MdrNbdQJj8I1+nNZAyR0UiN88ZoBxRmDsa9lrsWvHqoO/lP6ABTVX5pHEjOVwaM4q/uS6lck7vsnMVMH/Iz+5HBKc6VvA92v4IxuqwJ+Vo+jae0DalC1fL5LDTZcGzd8YUZbL8zTb5ebkqxyvPA6HM1ok9QwIlnluOAL09qvqGFF/kMFm/+HMcD/BI57j1JCJGitW3yPRwb/ifbHwke0MuHuvyKRN8kqR9E2UKry/yeSVdaMfE35UamrDn1h+5VodF8mcV9Nz50o8UgdTWsfHE4tXqJGrbqGv0ISs4rGcTgw/Kz+kKwHA7+w5yGyZJHQieQ2JPog6UF5wSyUFyyd0nVzpzRvFIpzhidknycrMdkq+17MJppoIqqX/gZe/8L2C+ASGQAAAABJRU5ErkJggg=="
+              />
+              <span #counter>1</span>
+              <svg
+                (click)="plus(counter, product._id, total)"
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                width="100"
+                height="100"
+                viewBox="0 0 48 48"
+              >
+                <path
+                  fill="#4caf50"
+                  d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+                ></path>
+                <path fill="#fff" d="M21,14h6v20h-6V14z"></path>
+                <path fill="#fff" d="M14,21h20v6H14V21z"></path>
+              </svg>
+            </td>
+            <td #total>{{ product.price }}</td>
+          </tr>
+
+          <!-- <div class="card">
+            <img src="assets/{{ product.image }}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">
+                {{ product.name }}
+              </p>
+              <small>{{ product.price | currency : "EUR" }}</small>
+            </div>
+          </div> -->
+        </ng-container>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">TOTAL</td>
+          <td>{{ productsTotal | currency : "EUR" }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="d-flex align-items-center justify-content-end p-3">
+    <button
+      [disabled]="!productsTotal"
+      (click)="confirmOrder()"
+      type="button"
+      class="btn btn-primary"
+    >
+      Purchase
+    </button>
+  </div>
+  <div *ngIf="confirmed" class="alert alert-warning" role="alert">
+    Every thing is done!
+  </div>
+</div>
